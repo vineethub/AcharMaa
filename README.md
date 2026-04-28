@@ -1,75 +1,111 @@
-# AcharMaa
+# 🥭 AcharMaa
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+**AcharMaa** is a modern web platform to showcase and sell **authentic homemade desi achar (pickles)**.
+The goal is to combine traditional taste with a fast, SEO-friendly, and user-friendly digital experience.
 
-## Setup
+---
 
-Make sure to install dependencies:
+## 🚀 Features
+
+* 🛒 Browse different types of achar
+* ⚡ Fast performance with Nuxt 3
+* 🔍 SEO optimized for better reach
+* 📱 Fully responsive (mobile, tablet, desktop)
+* 🎯 Clean and modern UI
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend:** Nuxt 3 (Vue 3)
+* **Styling:** Tailwind CSS (recommended)
+* **Backend (planned):** Laravel API
+* **Package Manager:** npm
+
+---
+
+## 📦 Installation
+
+Clone the repository:
 
 ```bash
-# npm
+git clone <your-repo-url>
+cd AcharMaa
+```
+
+Install dependencies:
+
+```bash
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+---
 
-Start the development server on `http://localhost:3000`:
+## 💻 Development
+
+Run the development server:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Open in browser:
+👉 http://localhost:3000
 
-Build the application for production:
+---
+
+## 🏗️ Production Build
+
+Build the app:
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+Preview production build:
 
 ```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
+
+## 📁 Project Structure (Basic)
+
+```
+AcharMaa/
+├── app/
+├── public/
+├── nuxt.config.ts
+├── package.json
+└── tsconfig.json
+```
+
+---
+
+## 🌐 Future Enhancements
+
+* 🧾 Checkout & payment integration (Razorpay / Stripe)
+* 📦 Order management system
+* 🔐 User authentication
+* 🛠️ Admin dashboard
+* 📊 Analytics & tracking
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+Feel free to fork this repo and submit a pull request.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+Developed by **Vineet Kumar**
