@@ -1,29 +1,29 @@
 name: Achar maa
 
-on: 
-push:
-  branches:[main,develop]
-pull_request:
-  branches: [main,develop]
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
 
 jobs:
-   nuxt-test:
+  nuxt-test:
     runs-on: ubuntu-latest
 
-  setps:
+    steps:
       - name: Check out
-        uses: action/checkout@4
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-           node-version: 20
+          node-version: 20
 
-      - nema: Install dependencies
-        run: npm install 
+      - name: Install dependencies
+        run: npm install
 
-      - name: Buils project
+      - name: Build project
         run: npm run build
 
       - name: Run lint (optional)
-        run: npm run lint || true  
+        run: npm run lint || true
