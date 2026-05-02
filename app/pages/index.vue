@@ -1,106 +1,123 @@
 <template>
     <div class="bg-[#FFF5E1] min-h-screen pb-16">
+      
+      <!-- Container -->
+      <div class="max-w-6xl mx-auto">
   
-      <!-- 🔝 Header -->
-      <header class="sticky top-0 bg-white z-50 shadow-sm px-4 py-3 flex items-center justify-between">
-        <h1 class="text-lg font-bold text-[#D35400]">AcharMaa</h1>
-        <div class="flex items-center gap-4 text-xl">
-          <span>🔍</span>
-          <span>🛒</span>
-        </div>
-      </header>
-  
-      <!-- 🎯 Hero -->
-      <section class="p-4">
-        <div class="bg-[#D35400] text-white rounded-xl p-4">
-          <h2 class="text-lg font-bold">Ghar ka swaad ❤️</h2>
-          <p class="text-sm opacity-90">Authentic homemade achar</p>
-          <button class="mt-3 bg-white text-[#D35400] px-4 py-2 rounded-lg text-sm font-semibold">
-            Shop Now
-          </button>
-        </div>
-      </section>
-  
-      <!-- 🧭 Categories -->
-      <section class="px-4">
-        <h3 class="font-semibold mb-3">Categories</h3>
-        <div class="flex gap-3 overflow-x-auto pb-2">
-          <div
-            v-for="cat in categories"
-            :key="cat.name"
-            class="min-w-[80px] bg-white rounded-xl p-3 text-center shadow"
-          >
-            <div class="text-2xl">{{ cat.icon }}</div>
-            <p class="text-xs mt-1">{{ cat.name }}</p>
+        <!-- 🔝 Header -->
+        <header class="sticky top-0 bg-white z-50 shadow-sm px-4 md:px-8 py-3 flex items-center justify-between">
+          <h1 class="text-lg md:text-xl font-bold text-[#D35400]">AcharMaa</h1>
+          <div class="flex items-center gap-6 text-xl">
+            <span class="cursor-pointer hover:scale-110 transition">🔍</span>
+            <span class="cursor-pointer hover:scale-110 transition">🛒</span>
           </div>
-        </div>
-      </section>
+        </header>
   
-      <!-- 🛍️ Best Sellers -->
-      <section class="px-4 mt-5">
-        <div class="flex justify-between items-center mb-3">
-          <h3 class="font-semibold">Best Sellers</h3>
-          <span class="text-xs text-[#D35400]">See all</span>
-        </div>
+        <!-- 🎯 Hero -->
+        <section class="p-4 md:p-8">
+          <div class="bg-[#D35400] text-white rounded-xl p-5 md:p-10 flex flex-col md:flex-row items-center justify-between">
+            
+            <div>
+              <h2 class="text-lg md:text-3xl font-bold">Ghar ka swaad ❤️</h2>
+              <p class="text-sm md:text-base opacity-90 mt-1">
+                Authentic homemade achar delivered fast
+              </p>
   
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          <div
-            v-for="item in products"
-            :key="item.name"
-            class="bg-white rounded-xl p-2 shadow"
-          >
-            <!-- Image -->
-            <div class="h-24 bg-gray-200 rounded-lg mb-2"></div>
+              <button class="mt-4 bg-white text-[#D35400] px-5 py-2 rounded-lg text-sm font-semibold hover:scale-105 transition">
+                Shop Now
+              </button>
+            </div>
   
-            <!-- Info -->
-            <h4 class="text-sm font-semibold">{{ item.name }}</h4>
-            <p class="text-xs text-gray-500">₹{{ item.price }}</p>
+            <!-- image placeholder -->
+            <div class="hidden md:block w-56 h-36 bg-white/20 rounded-lg"></div>
   
-            <!-- Button -->
-            <button
-              class="mt-2 w-full bg-[#D35400] text-white text-sm py-1.5 rounded-lg"
+          </div>
+        </section>
+  
+        <!-- 🧭 Categories -->
+        <section class="px-4 md:px-8">
+          <h3 class="font-semibold mb-3">Categories</h3>
+  
+          <div class="flex md:grid md:grid-cols-4 gap-3 overflow-x-auto md:overflow-visible pb-2">
+            <div
+              v-for="cat in categories"
+              :key="cat.name"
+              class="min-w-[90px] bg-white rounded-xl p-3 text-center shadow hover:shadow-md hover:-translate-y-1 transition"
             >
-              Add
-            </button>
+              <div class="text-2xl">{{ cat.icon }}</div>
+              <p class="text-xs mt-1">{{ cat.name }}</p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
   
-      <!-- 🔥 Trending -->
-      <section class="px-4 mt-6">
-        <h3 class="font-semibold mb-3">🔥 Trending</h3>
-        <div class="flex gap-3 overflow-x-auto pb-2">
-          <div
-            v-for="item in trending"
-            :key="item.name"
-            class="min-w-[140px] bg-white rounded-xl p-2 shadow"
-          >
-            <div class="h-20 bg-gray-200 rounded-lg mb-2"></div>
-            <p class="text-sm font-semibold">{{ item.name }}</p>
+        <!-- 🛍️ Best Sellers -->
+        <section class="px-4 md:px-8 mt-6">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="font-semibold">Best Sellers</h3>
+            <span class="text-xs text-[#D35400] cursor-pointer hover:underline">See all</span>
           </div>
-        </div>
-      </section>
   
-      <!-- ❤️ Trust -->
-      <section class="px-4 mt-6">
-        <div class="bg-white rounded-xl p-4 grid grid-cols-3 text-center text-xs">
-          <div>
-            <p class="text-xl">🏡</p>
-            <p>Homemade</p>
-          </div>
-          <div>
-            <p class="text-xl">🌿</p>
-            <p>No Preservatives</p>
-          </div>
-          <div>
-            <p class="text-xl">🚚</p>
-            <p>Fast Delivery</p>
-          </div>
-        </div>
-      </section>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div
+              v-for="item in products"
+              :key="item.name"
+              class="bg-white rounded-xl p-3 shadow hover:shadow-lg hover:-translate-y-1 transition"
+            >
+              <!-- Image -->
+              <div class="h-28 bg-gray-200 rounded-lg mb-2"></div>
   
-      <!-- 📱 Bottom Nav -->
-      <nav class="fixed bottom-0 left-0 w-full bg-white border-t flex justify-around py-2 text-sm">
+              <!-- Info -->
+              <h4 class="text-sm font-semibold">{{ item.name }}</h4>
+              <p class="text-xs text-gray-500">₹{{ item.price }}</p>
+  
+              <!-- Button -->
+              <button
+                class="mt-2 w-full bg-[#D35400] text-white text-sm py-1.5 rounded-lg hover:bg-[#b84300] transition"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </section>
+  
+        <!-- 🔥 Trending -->
+        <section class="px-4 md:px-8 mt-6">
+          <h3 class="font-semibold mb-3">🔥 Trending</h3>
+  
+          <div class="flex md:grid md:grid-cols-3 gap-3 overflow-x-auto md:overflow-visible pb-2">
+            <div
+              v-for="item in trending"
+              :key="item.name"
+              class="min-w-[150px] bg-white rounded-xl p-3 shadow hover:shadow-md hover:-translate-y-1 transition"
+            >
+              <div class="h-24 bg-gray-200 rounded-lg mb-2"></div>
+              <p class="text-sm font-semibold">{{ item.name }}</p>
+            </div>
+          </div>
+        </section>
+  
+        <!-- ❤️ Trust -->
+        <section class="px-4 md:px-8 mt-6 mb-6">
+          <div class="bg-white rounded-xl p-4 md:p-6 grid grid-cols-3 text-center text-xs md:text-sm">
+            <div class="hover:scale-105 transition">
+              <p class="text-xl">🏡</p>
+              <p>Homemade</p>
+            </div>
+            <div class="hover:scale-105 transition">
+              <p class="text-xl">🌿</p>
+              <p>No Preservatives</p>
+            </div>
+            <div class="hover:scale-105 transition">
+              <p class="text-xl">🚚</p>
+              <p>Fast Delivery</p>
+            </div>
+          </div>
+        </section>
+  
+      </div>
+  
+      <!-- 📱 Bottom Nav (mobile only) -->
+      <nav class="fixed md:hidden bottom-0 left-0 w-full bg-white border-t flex justify-around py-2 text-sm">
         <div class="flex flex-col items-center text-[#D35400]">
           <span>🏠</span>
           <span>Home</span>
