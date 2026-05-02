@@ -1,0 +1,29 @@
+name: Achar maa
+
+on: 
+push:
+  branches:[main,develop]
+pull_request:
+  branches: [main,develop]
+
+jobs:
+   nuxt-test:
+    runs-on: ubuntu-latest
+
+  setps:
+      - name: Check out
+        uses: action/checkout@4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+           node-version: 20
+
+      - nema: Install dependencies
+        run: npm install 
+
+      - name: Buils project
+        run: npm run build
+
+      - name: Run lint (optional)
+        run: npm run lint || true  
