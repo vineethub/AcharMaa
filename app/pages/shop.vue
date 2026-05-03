@@ -8,7 +8,15 @@
           <h1 class="text-lg md:text-xl font-bold text-[#D35400]"><NuxtLink to="/">AcharMaa</NuxtLink></h1>
           <div class="flex items-center gap-6 text-xl">
             <span>🔍</span>
-            <span>🛒</span>
+            <NuxtLink to="/cart" class="relative">
+  🛒
+  <span 
+    v-if="cart.totalItems"
+    class="absolute -top-2 -right-2 bg-[#D35400] text-white text-xs px-1 rounded-full"
+  >
+    {{ cart.totalItems }}
+  </span>
+</NuxtLink>
           </div>
         </header>
   
@@ -80,9 +88,40 @@
       <h4 class="text-sm font-semibold">{{ item.name }}</h4>
       <p class="text-xs text-gray-500">₹{{ item.price }}</p>
 
-      <button class="mt-2 w-full bg-[#D35400] text-white text-sm py-1.5 rounded-lg hover:bg-[#b84300] transition">
+      <!-- ✅ Cart UI -->
+        <div 
+        v-if="getCartItem(item.id)" 
+        class="flex items-center justify-between mt-2 bg-[#D35400] text-white rounded-lg px-2"
+        >
+
+        <button 
+            @click="cart.decrease(item.id)" 
+            class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-90 transition"
+        >
+            -
+        </button>
+
+        <span class="text-sm font-semibold">
+            {{ getCartItem(item.id).quantity }}
+        </span>
+
+        <button 
+            @click="cart.increase(item.id)" 
+            class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-90 transition"
+        >
+            +
+        </button>
+
+        </div>
+
+        <!-- Add Button -->
+        <button
+        v-else
+        class="mt-2 w-full bg-[#D35400] text-white text-sm py-1.5 rounded-lg hover:bg-[#b84300] transition active:scale-95"
+        @click="cart.addToCart(item)"
+        >
         Add
-      </button>
+        </button>
     </div>
 
   </div>
@@ -93,7 +132,7 @@
 </div>
   
       <!-- 📱 Bottom Nav -->
-      <nav class="fixed md:hidden bottom-0 left-0 w-full bg-white border-t flex justify-around py-2 text-sm">
+      <nav class="fixed md:hidden bottom-0 left-0 w-full bg-white flex justify-around py-3 text-sm">
         <div class="flex flex-col items-center">
           <span>🏠</span>
           <span>Home</span>
@@ -117,8 +156,14 @@
   
   <script setup>
   import { ref, computed } from 'vue'
-  
+  import { useCartStore } from '@/stores/cart'
+
+  const cart = useCartStore()
   const activeCategory = ref('Mango')
+
+  const getCartItem = (id) => {
+   return cart.items.find(i => i.id === id)
+  }
   
   const categories = [
     { name: 'Mango', icon: '🥭' },
