@@ -9,7 +9,15 @@
           <h1 class="text-lg md:text-xl font-bold text-[#D35400]">AcharMaa</h1>
           <div class="flex items-center gap-6 text-xl">
             <span class="cursor-pointer hover:scale-110 transition">🔍</span>
-            <span class="cursor-pointer hover:scale-110 transition">🛒</span>
+            <NuxtLink to="/cart" class="relative">
+              🛒
+              <span 
+                v-if="cart.totalItems"
+                class="absolute -top-2 -right-2 bg-[#D35400] text-white text-xs px-1 rounded-full"
+              >
+                {{ cart.totalItems }}
+              </span>
+            </NuxtLink>
           </div>
         </header>
   
@@ -71,11 +79,37 @@
               <p class="text-xs text-gray-500">₹{{ item.price }}</p>
   
               <!-- Button -->
-              <button
+              <!-- ✅ Correct Cart Logic -->
+              <div 
+                  v-if="getCartItem(item.id)" 
+                  class="flex items-center justify-between mt-2 bg-[#D35400] text-white rounded-lg px-2">
+
+                  <!-- Minus -->
+                  <button 
+                    @click="cart.decrease(item.id)" 
+                    class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-90 transition">
+                    -
+                  </button>
+
+                  <!-- Count -->
+                  <span class="text-sm font-semibold">
+                    {{ getCartItem(item.id).quantity }}
+                  </span>
+
+                  <!-- Plus -->
+                  <button 
+                    @click="cart.increase(item.id)" 
+                    class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-90 transition">
+                    +
+                  </button>
+
+                </div>
+                <button
+                v-else
                 class="mt-2 w-full bg-[#D35400] text-white text-sm py-1.5 rounded-lg hover:bg-[#b84300] transition"
-              >
+                @click="cart.addToCart(item)">
                 Add
-              </button>
+                </button>
             </div>
           </div>
         </section>
@@ -139,7 +173,16 @@
     </div>
   </template>
   
-  <script setup>
+<script setup>
+
+import { useCartStore } from '@/stores/cart'
+
+const cart = useCartStore()
+
+const getCartItem = (id) => {
+  return cart.items.find(i => i.id === id)
+}
+
   const categories = [
     { name: 'Mango', icon: '🥭' },
     { name: 'Lemon', icon: '🍋' },
@@ -148,11 +191,11 @@
   ]
   
   const products = [
-    { name: 'Mango Achar', price: 199 },
-    { name: 'Lemon Achar', price: 149 },
-    { name: 'Mix Achar', price: 179 },
-    { name: 'Chilli Achar', price: 129 },
-  ]
+  { id: 1, name: 'Mango Achar', price: 199 },
+  { id: 2, name: 'Lemon Achar', price: 149 },
+  { id: 3, name: 'Mix Achar', price: 179 },
+  { id: 4, name: 'Chilli Achar', price: 129 },
+]
   
   const trending = [
     { name: 'Garlic Achar' },
