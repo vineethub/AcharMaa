@@ -54,7 +54,7 @@
         <section class="px-4 md:px-8 mt-6">
           <div class="flex justify-between items-center mb-3">
             <h3 class="font-semibold">Best Sellers</h3>
-            <span class="text-xs text-[#D35400] cursor-pointer hover:underline">See all</span>
+            <span class="text-xs text-[#D35400] cursor-pointer hover:underline"><NuxtLink to="/shop">See all</NuxtLink></span>
           </div>
   
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

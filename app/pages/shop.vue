@@ -5,7 +5,7 @@
   
         <!-- 🔝 Header -->
         <header class="sticky top-0 bg-white z-50 shadow-sm px-4 md:px-8 py-3 flex items-center justify-between">
-          <h1 class="text-lg md:text-xl font-bold text-[#D35400]">AcharMaa</h1>
+          <h1 class="text-lg md:text-xl font-bold text-[#D35400]"><NuxtLink to="/">AcharMaa</NuxtLink></h1>
           <div class="flex items-center gap-6 text-xl">
             <span>🔍</span>
             <span>🛒</span>
