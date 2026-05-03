@@ -74,7 +74,7 @@
       <!-- 💰 Bottom Checkout Bar -->
       <div 
         v-if="cart.items.length"
-        class="fixed bottom-0 left-0 w-full bg-white border-t p-4 flex items-center justify-between"
+        class="fixed bottom-0 left-0 w-full bg-white  p-4 flex items-center justify-between"
       >
         
         <div>
