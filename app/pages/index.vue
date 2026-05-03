@@ -117,7 +117,7 @@
       </div>
   
       <!-- 📱 Bottom Nav (mobile only) -->
-      <nav class="fixed md:hidden bottom-0 left-0 w-full bg-white border-t flex justify-around py-2 text-sm">
+      <nav class="fixed md:hidden bottom-0 left-0 w-full bg-white flex justify-around py-2 text-sm">
         <div class="flex flex-col items-center text-[#D35400]">
           <span>🏠</span>
           <span>Home</span>

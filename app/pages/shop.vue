@@ -93,7 +93,7 @@
 </div>
   
       <!-- 📱 Bottom Nav -->
-      <nav class="fixed md:hidden bottom-0 left-0 w-full bg-white border-t flex justify-around py-2 text-sm">
+      <nav class="fixed md:hidden bottom-0 left-0 w-full bg-white flex justify-around py-3 text-sm">
         <div class="flex flex-col items-center">
           <span>🏠</span>
           <span>Home</span>
