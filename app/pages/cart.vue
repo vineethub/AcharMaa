@@ -3,6 +3,7 @@
 
     <!-- 🔝 Header -->
     <header class="sticky top-0 bg-white z-50 shadow-sm px-4 py-3 flex items-center justify-between">
+      <button @click="$router.back()" class="text-lg">←</button>
       <h1 class="font-semibold text-[#D35400]">Your Cart</h1>
       <NuxtLink to="/" class="text-sm text-gray-500">Home</NuxtLink>
     </header>
@@ -67,7 +68,7 @@
     <!-- 💳 Bottom Summary -->
     <div 
       v-if="cart.items.length"
-      class="fixed bottom-0 left-0 w-full bg-white border-t p-4"
+      class="fixed bottom-0 left-0 w-full bg-white p-4"
     >
 
       <div class="flex justify-between mb-3">
