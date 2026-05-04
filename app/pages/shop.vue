@@ -78,51 +78,11 @@
 
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
-    <div
-      v-for="item in filteredProducts"
-      :key="item.id"
-      class="bg-white rounded-xl p-3 shadow hover:shadow-lg hover:-translate-y-1 transition"
-    >
-      <div class="h-28 bg-gray-200 rounded-lg mb-2"></div>
-
-      <h4 class="text-sm font-semibold">{{ item.name }}</h4>
-      <p class="text-xs text-gray-500">₹{{ item.price }}</p>
-
-      <!-- ✅ Cart UI -->
-        <div 
-        v-if="getCartItem(item.id)" 
-        class="flex items-center justify-between mt-2 bg-[#D35400] text-white rounded-lg px-2"
-        >
-
-        <button 
-            @click="cart.decrease(item.id)" 
-            class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-90 transition"
-        >
-            -
-        </button>
-
-        <span class="text-sm font-semibold">
-            {{ getCartItem(item.id).quantity }}
-        </span>
-
-        <button 
-            @click="cart.increase(item.id)" 
-            class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-90 transition"
-        >
-            +
-        </button>
-
-        </div>
-
-        <!-- Add Button -->
-        <button
-        v-else
-        class="mt-2 w-full bg-[#D35400] text-white text-sm py-1.5 rounded-lg hover:bg-[#b84300] transition active:scale-95"
-        @click="cart.addToCart(item)"
-        >
-        Add
-        </button>
-    </div>
+    <ProductCard 
+        v-for="item in filteredProducts" 
+        :key="item.id" 
+        :product="item" 
+      />
 
   </div>
 
@@ -161,9 +121,7 @@
   const cart = useCartStore()
   const activeCategory = ref('Mango')
 
-  const getCartItem = (id) => {
-   return cart.items.find(i => i.id === id)
-  }
+  import ProductCard from '@/components/ProductCard.vue'
   
   const categories = [
     { name: 'Mango', icon: '🥭' },

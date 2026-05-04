@@ -66,51 +66,11 @@
           </div>
   
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <div
-              v-for="item in products"
-              :key="item.name"
-              class="bg-white rounded-xl p-3 shadow hover:shadow-lg hover:-translate-y-1 transition"
-            >
-              <!-- Image -->
-              <div class="h-28 bg-gray-200 rounded-lg mb-2"></div>
-  
-              <!-- Info -->
-              <h4 class="text-sm font-semibold">{{ item.name }}</h4>
-              <p class="text-xs text-gray-500">₹{{ item.price }}</p>
-  
-              <!-- Button -->
-              <!-- ✅ Correct Cart Logic -->
-              <div 
-                  v-if="getCartItem(item.id)" 
-                  class="flex items-center justify-between mt-2 bg-[#D35400] text-white rounded-lg px-2">
-
-                  <!-- Minus -->
-                  <button 
-                    @click="cart.decrease(item.id)" 
-                    class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-90 transition">
-                    -
-                  </button>
-
-                  <!-- Count -->
-                  <span class="text-sm font-semibold">
-                    {{ getCartItem(item.id).quantity }}
-                  </span>
-
-                  <!-- Plus -->
-                  <button 
-                    @click="cart.increase(item.id)" 
-                    class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-90 transition">
-                    +
-                  </button>
-
-                </div>
-                <button
-                v-else
-                class="mt-2 w-full bg-[#D35400] text-white text-sm py-1.5 rounded-lg hover:bg-[#b84300] transition"
-                @click="cart.addToCart(item)">
-                Add
-                </button>
-            </div>
+            <ProductCard 
+            v-for="item in products" 
+            :key="item.id" 
+            :product="item" 
+          />
           </div>
         </section>
   
@@ -177,11 +137,9 @@
 
 import { useCartStore } from '@/stores/cart'
 
-const cart = useCartStore()
+import ProductCard from '@/components/ProductCard.vue'
 
-const getCartItem = (id) => {
-  return cart.items.find(i => i.id === id)
-}
+const cart = useCartStore()
 
   const categories = [
     { name: 'Mango', icon: '🥭' },
