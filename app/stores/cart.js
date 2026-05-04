@@ -1,4 +1,4 @@
-// stores/cart.js
+import { defineStore } from 'pinia'
 
 export const useCartStore = defineStore('cart', {
   state: () => ({
@@ -14,6 +14,23 @@ export const useCartStore = defineStore('cart', {
   },
 
   actions: {
+    // ✅ Load (CLIENT ONLY)
+    loadCart() {
+      if (import.meta.client) {
+        const data = localStorage.getItem('cart')
+        if (data) {
+          this.items = JSON.parse(data)
+        }
+      }
+    },
+
+    // ✅ Save
+    saveCart() {
+      if (import.meta.client) {
+        localStorage.setItem('cart', JSON.stringify(this.items))
+      }
+    },
+
     addToCart(product) {
       const existing = this.items.find(
         i => i.variantId === product.variantId
@@ -22,16 +39,17 @@ export const useCartStore = defineStore('cart', {
       if (existing) {
         existing.quantity++
       } else {
-        this.items.push({
-          ...product,
-          quantity: 1
-        })
+        this.items.push({ ...product, quantity: 1 })
       }
+
+      this.saveCart()
     },
 
     increase(variantId) {
       const item = this.items.find(i => i.variantId === variantId)
       if (item) item.quantity++
+
+      this.saveCart()
     },
 
     decrease(variantId) {
@@ -44,6 +62,8 @@ export const useCartStore = defineStore('cart', {
       } else {
         this.items = this.items.filter(i => i.variantId !== variantId)
       }
+
+      this.saveCart()
     }
   }
 })
