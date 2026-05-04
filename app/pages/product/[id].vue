@@ -25,11 +25,31 @@
         </header>
   
         <!-- 🖼️ Product Image -->
-        <div class="bg-white p-6 flex justify-center">
-          <div class="w-56 h-56 bg-gray-200 rounded-xl flex items-center justify-center shadow">
-            <span class="text-6xl">🥭</span>
-          </div>
+        <div class="bg-white">
+  
+    <!-- Slider -->
+    <div class="overflow-x-auto flex snap-x snap-mandatory scroll-smooth no-scrollbar">
+
+        <div
+        v-for="(img, index) in product.images"
+        :key="index"
+        class="min-w-full flex justify-center snap-center p-6">
+        <div class="w-56 h-56 bg-gray-200 rounded-xl flex items-center justify-center shadow">
+            <img :src="img" class="w-full h-full object-cover rounded-xl" />
         </div>
+        </div>
+
+    </div>
+
+    <!-- Dots -->
+    <div class="flex justify-center gap-2 pb-4">
+        <span
+        v-for="(img, i) in product.images"
+        :key="i"
+        class="w-2 h-2 rounded-full bg-gray-300"></span>
+    </div>
+
+    </div>
   
         <!-- 📦 Info -->
         <div class="px-4 mt-4">
@@ -180,6 +200,11 @@ const products = [
   {
     id: 1,
     name: 'Mango Achar',
+    images: [
+    '/images/img1.jpg',
+    '/images/img2.jpg',
+    '/images/img3.jpg'
+  ],
     variants: [
       { id: '1-250', label: '250g', price: 199 },
       { id: '1-500', label: '500g', price: 349 },
@@ -189,6 +214,11 @@ const products = [
   {
     id: 2,
     name: 'Lemon Achar',
+    images: [
+    '/images/img1.jpg',
+    '/images/img2.jpg',
+    '/images/img3.jpg'
+    ],
     variants: [
       { id: '2-250', label: '250g', price: 149 },
       { id: '2-500', label: '500g', price: 279 },
@@ -198,6 +228,11 @@ const products = [
   {
     id: 3,
     name: 'Mix Achar',
+    images: [
+    '/images/img1.jpg',
+    '/images/img2.jpg',
+    '/images/img3.jpg'
+   ],
     variants: [
       { id: '3-250', label: '250g', price: 179 },
       { id: '3-500', label: '500g', price: 329 },
@@ -207,6 +242,11 @@ const products = [
   {
     id: 4,
     name: 'Chilli Achar',
+    images: [
+    '/images/img1.jpg',
+    '/images/img2.jpg',
+    '/images/img3.jpg'
+   ],
     variants: [
       { id: '4-250', label: '250g', price: 129 },
       { id: '4-500', label: '500g', price: 249 },
