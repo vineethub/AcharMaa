@@ -6,12 +6,11 @@
         <!-- 🔝 Header -->
         <header class="sticky top-0 bg-white z-50 shadow-sm px-4 md:px-8 py-3 flex items-center justify-between">
   
-          <div class="flex items-center gap-2">
             <button @click="$router.back()" class="text-lg">←</button>
             <h1 class="text-lg md:text-xl font-bold text-[#D35400]">
                 Guest Checkout
             </h1>
-          </div>
+          
   
           <NuxtLink to="/cart" class="text-xl">🛒</NuxtLink>
   
