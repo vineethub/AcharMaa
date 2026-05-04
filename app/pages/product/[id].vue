@@ -28,7 +28,7 @@
         <div class="bg-white">
   
     <!-- Slider -->
-    <div class="overflow-x-auto flex snap-x snap-mandatory scroll-smooth no-scrollbar">
+    <div @scroll="onScroll" class="overflow-x-auto flex snap-x snap-mandatory scroll-smooth no-scrollbar">
 
         <div
         v-for="(img, index) in product.images"
@@ -46,7 +46,8 @@
         <span
         v-for="(img, i) in product.images"
         :key="i"
-        class="w-2 h-2 rounded-full bg-gray-300"></span>
+        class="w-2 h-2 rounded-full"
+        :class="i === activeIndex ? 'bg-[#D35400]' : 'bg-gray-300'"></span>
     </div>
 
     </div>
@@ -195,6 +196,14 @@ import ProductCard from '@/components/ProductCard.vue'
 const route = useRoute()
 const cart = useCartStore()
 
+const activeIndex = ref(0)
+
+const onScroll = (e) => {
+  const scrollLeft = e.target.scrollLeft
+  const width = e.target.clientWidth
+  activeIndex.value = Math.round(scrollLeft / width)
+}
+
 // ✅ Products
 const products = [
   {
@@ -287,6 +296,7 @@ const addToCart = () => {
     price: selectedVariant.value.price
   })
 }
+
 </script>
 
 <style  scoped>
