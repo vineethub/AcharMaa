@@ -20,7 +20,7 @@
     >
       <button 
         @click="cart.decrease(product.id)" 
-        class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-90 transition"
+        class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-95 transition"
       >
         -
       </button>
@@ -31,7 +31,7 @@
 
       <button 
         @click="cart.increase(product.id)" 
-        class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-90 transition"
+        class="w-8 h-8 flex items-center justify-center text-lg font-bold active:scale-95 transition"
       >
         +
       </button>
