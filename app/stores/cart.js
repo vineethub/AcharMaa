@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+// stores/cart.js
 
 export const useCartStore = defineStore('cart', {
   state: () => ({
@@ -6,32 +6,43 @@ export const useCartStore = defineStore('cart', {
   }),
 
   getters: {
-    totalItems: (state) => state.items.reduce((t, i) => t + i.quantity, 0),
-    totalPrice: (state) => state.items.reduce((t, i) => t + i.price * i.quantity, 0)
+    totalItems: (state) =>
+      state.items.reduce((sum, i) => sum + i.quantity, 0),
+
+    totalPrice: (state) =>
+      state.items.reduce((sum, i) => sum + i.price * i.quantity, 0)
   },
 
   actions: {
     addToCart(product) {
-      const existing = this.items.find(i => i.id === product.id)
+      const existing = this.items.find(
+        i => i.variantId === product.variantId
+      )
 
       if (existing) {
         existing.quantity++
       } else {
-        this.items.push({ ...product, quantity: 1 })
+        this.items.push({
+          ...product,
+          quantity: 1
+        })
       }
     },
 
-    increase(id) {
-      const item = this.items.find(i => i.id === id)
+    increase(variantId) {
+      const item = this.items.find(i => i.variantId === variantId)
       if (item) item.quantity++
     },
 
-    decrease(id) {
-      const item = this.items.find(i => i.id === id)
-      if (item && item.quantity > 1) {
+    decrease(variantId) {
+      const item = this.items.find(i => i.variantId === variantId)
+
+      if (!item) return
+
+      if (item.quantity > 1) {
         item.quantity--
       } else {
-        this.items = this.items.filter(i => i.id !== id)
+        this.items = this.items.filter(i => i.variantId !== variantId)
       }
     }
   }
