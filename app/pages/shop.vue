@@ -83,8 +83,10 @@
         :key="item.id" 
         :product="item" 
       />
-
   </div>
+  <div v-if="!filteredProducts.length" class="text-center text-gray-400 mt-10">
+      No products found 😢
+    </div>
 
 </section>
 
@@ -134,6 +136,7 @@
   {
     id: 1,
     name: 'Mango Achar',
+    category: 'Mango',
     variants: [
       { id: '1-250', label: '250g', price: 199 },
       { id: '1-500', label: '500g', price: 349 },
@@ -143,6 +146,7 @@
   {
     id: 2,
     name: 'Lemon Achar',
+    category: 'Lemon',
     variants: [
       { id: '2-250', label: '250g', price: 149 },
       { id: '2-500', label: '500g', price: 279 },
@@ -152,6 +156,7 @@
   {
     id: 3,
     name: 'Mix Achar',
+    category: 'Mixed',
     variants: [
       { id: '3-250', label: '250g', price: 179 },
       { id: '3-500', label: '500g', price: 329 },
@@ -161,6 +166,7 @@
   {
     id: 4,
     name: 'Chilli Achar',
+    category: 'Spicy',
     variants: [
       { id: '4-250', label: '250g', price: 129 },
       { id: '4-500', label: '500g', price: 249 },
@@ -169,7 +175,7 @@
   }
 ]
   
-  const filteredProducts = computed(() => {
-    return products.filter(p => p.category === activeCategory.value)
-  })
+const filteredProducts = computed(() => {
+  return products.filter(p => p.category === activeCategory.value)
+})
   </script>
