@@ -116,14 +116,15 @@
     </div>
   </template>
   
-  <script setup>
-  import { ref, computed } from 'vue'
-  import { useCartStore } from '@/stores/cart'
+<script setup>
+import { ref, computed } from 'vue'
+import { useCartStore } from '@/stores/cart' 
+import ProductCard from '@/components/ProductCard.vue'
+import { useProductsStore } from '@/stores/products'
 
-  const cart = useCartStore()
-  const activeCategory = ref('Mango')
-
-  import ProductCard from '@/components/ProductCard.vue'
+const productsStore = useProductsStore()
+const cart = useCartStore()
+const activeCategory = ref('Mango')
   
   const categories = [
     { name: 'Mango', icon: '🥭' },
@@ -132,48 +133,7 @@
     { name: 'Mixed', icon: '🥗' },
   ]
   
-  const products = [
-  {
-    id: 1,
-    name: 'Mango Achar',
-    category: 'Mango',
-    variants: [
-      { id: '1-250', label: '250g', price: 199 },
-      { id: '1-500', label: '500g', price: 349 },
-      { id: '1-1kg', label: '1kg', price: 649 }
-    ]
-  },
-  {
-    id: 2,
-    name: 'Lemon Achar',
-    category: 'Lemon',
-    variants: [
-      { id: '2-250', label: '250g', price: 149 },
-      { id: '2-500', label: '500g', price: 279 },
-      { id: '2-1kg', label: '1kg', price: 499 }
-    ]
-  },
-  {
-    id: 3,
-    name: 'Mix Achar',
-    category: 'Mixed',
-    variants: [
-      { id: '3-250', label: '250g', price: 179 },
-      { id: '3-500', label: '500g', price: 329 },
-      { id: '3-1kg', label: '1kg', price: 599 }
-    ]
-  },
-  {
-    id: 4,
-    name: 'Chilli Achar',
-    category: 'Spicy',
-    variants: [
-      { id: '4-250', label: '250g', price: 129 },
-      { id: '4-500', label: '500g', price: 249 },
-      { id: '4-1kg', label: '1kg', price: 469 }
-    ]
-  }
-]
+  const products = productsStore.products;
   
 const filteredProducts = computed(() => {
   return products.filter(p => p.category === activeCategory.value)

@@ -139,6 +139,10 @@ import { useCartStore } from '@/stores/cart'
 
 import ProductCard from '@/components/ProductCard.vue'
 
+import { useProductsStore } from '@/stores/products'
+
+const productsStore = useProductsStore()
+
 const cart = useCartStore()
 
   const categories = [
@@ -148,44 +152,7 @@ const cart = useCartStore()
     { name: 'Mixed', icon: '🥗' },
   ]
   
-  const products = [
-  {
-    id: 1,
-    name: 'Mango Achar',
-    variants: [
-      { id: '1-250', label: '250g', price: 199 },
-      { id: '1-500', label: '500g', price: 349 },
-      { id: '1-1kg', label: '1kg', price: 649 }
-    ]
-  },
-  {
-    id: 2,
-    name: 'Lemon Achar',
-    variants: [
-      { id: '2-250', label: '250g', price: 149 },
-      { id: '2-500', label: '500g', price: 279 },
-      { id: '2-1kg', label: '1kg', price: 499 }
-    ]
-  },
-  {
-    id: 3,
-    name: 'Mix Achar',
-    variants: [
-      { id: '3-250', label: '250g', price: 179 },
-      { id: '3-500', label: '500g', price: 329 },
-      { id: '3-1kg', label: '1kg', price: 599 }
-    ]
-  },
-  {
-    id: 4,
-    name: 'Chilli Achar',
-    variants: [
-      { id: '4-250', label: '250g', price: 129 },
-      { id: '4-500', label: '500g', price: 249 },
-      { id: '4-1kg', label: '1kg', price: 469 }
-    ]
-  }
-]
+  const products = productsStore.products;
   
   const trending = [
     { name: 'Garlic Achar' },
