@@ -3,10 +3,6 @@
       
       <!-- Container -->
       <div class="max-w-6xl mx-auto">
-  
-        <!-- 🔝 Header -->
-        <AppHeader />
-  
         <!-- 🎯 Hero -->
         <section class="p-4 md:p-8">
           <div class="bg-[#D35400] text-white rounded-xl p-5 md:p-10 flex flex-col md:flex-row items-center justify-between">
@@ -95,9 +91,6 @@
         </section>
   
       </div>
-  
-      <!-- 📱 Bottom Nav (mobile only) -->
-      <BottomNav />
   
     </div>
   </template>

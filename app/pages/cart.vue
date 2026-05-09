@@ -93,5 +93,9 @@
 <script setup>
 import { useCartStore } from '@/stores/cart'
 
+definePageMeta({
+  layout: 'empty'
+})
+
 const cart = useCartStore()
 </script>
