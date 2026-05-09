@@ -211,7 +211,7 @@ const products = productsStore.products;
 
 // ✅ Current product
 const product = computed(() => {
-  return products.find(p => p.id == route.params.id)
+  return productsStore.getProductById(route.params.id)
 })
 
 // ✅ Selected Variant

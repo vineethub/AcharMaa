@@ -5,21 +5,7 @@
       <div class="max-w-6xl mx-auto">
   
         <!-- 🔝 Header -->
-        <header class="sticky top-0 bg-white z-50 shadow-sm px-4 md:px-8 py-3 flex items-center justify-between">
-          <h1 class="text-lg md:text-xl font-bold text-[#D35400]">AcharMaa</h1>
-          <div class="flex items-center gap-6 text-xl">
-            <span class="cursor-pointer hover:scale-110 transition">🔍</span>
-            <NuxtLink to="/cart" class="relative">
-              🛒
-              <span 
-                v-if="cart.totalItems"
-                class="absolute -top-2 -right-2 bg-[#D35400] text-white text-xs px-1 rounded-full"
-              >
-                {{ cart.totalItems }}
-              </span>
-            </NuxtLink>
-          </div>
-        </header>
+        <AppHeader />
   
         <!-- 🎯 Hero -->
         <section class="p-4 md:p-8">
@@ -111,24 +97,7 @@
       </div>
   
       <!-- 📱 Bottom Nav (mobile only) -->
-      <nav class="fixed md:hidden bottom-0 left-0 w-full bg-white flex justify-around py-2 text-sm">
-        <div class="flex flex-col items-center text-[#D35400]">
-          <span>🏠</span>
-          <span>Home</span>
-        </div>
-        <div class="flex flex-col items-center">
-          <span>🛍️</span>
-          <span>Shop</span>
-        </div>
-        <div class="flex flex-col items-center">
-          <span>🛒</span>
-          <span>Cart</span>
-        </div>
-        <div class="flex flex-col items-center">
-          <span>👤</span>
-          <span>Profile</span>
-        </div>
-      </nav>
+      <BottomNav />
   
     </div>
   </template>
