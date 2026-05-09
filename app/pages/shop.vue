@@ -17,7 +17,7 @@
   <div
     v-for="cat in categories"
     :key="cat.name"
-    @click="activeCategory = cat.name"
+   @click="selectCategory(cat.name)"
     class="flex flex-col items-center py-4 cursor-pointer relative"
   >
     
@@ -84,12 +84,13 @@ import { ref, computed, watchEffect} from 'vue'
 import { useCartStore } from '@/stores/cart' 
 import ProductCard from '@/components/ProductCard.vue'
 import { useProductsStore } from '@/stores/products'
-import { useRoute } from 'vue-router'
+import { useRoute,useRouter } from 'vue-router'
 
 const productsStore = useProductsStore()
 const cart = useCartStore()
 const activeCategory = ref('Mango')
 const route = useRoute()
+const router = useRouter()
 
   
   const categories = [
@@ -98,6 +99,17 @@ const route = useRoute()
     { name: 'Spicy', icon: '🌶️' },
     { name: 'Mixed', icon: '🥗' },
   ]
+
+  const selectCategory = (category) => {
+  activeCategory.value = category
+
+  router.push({
+    query: {
+      category
+    }
+  })
+}
+
 
 watchEffect(() => {
   if (route.query.category) {
