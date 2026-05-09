@@ -24,7 +24,7 @@
       <div class="flex items-center gap-5 text-xl">
   
         <!-- Search -->
-        <button>🔍</button>
+        <button @click="showSearch = true">🔍</button>
   
         <!-- Cart -->
         <NuxtLink to="/cart" class="relative">
@@ -41,12 +41,18 @@
         </NuxtLink>
   
       </div>
+      <!-- ✅ Search Overlay -->
+    <SearchOverlay
+      v-if="showSearch"
+      @close="showSearch = false"
+      />  
   
     </header>
   </template>
   
   <script setup>
   import { useCartStore } from '@/stores/cart'
+  import SearchOverlay from '@/components/SearchOverlay.vue'
   
   defineProps({
     showBack: {
@@ -56,4 +62,5 @@
   })
   
   const cart = useCartStore()
+  const showSearch = ref(false)
   </script>

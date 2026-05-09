@@ -74,6 +74,11 @@ export const useProductsStore = defineStore('products', {
     getProductsByCategory: (state) => {
       return (category) =>
         state.products.filter(p => p.category === category)
-    }
+    },
+    searchedProducts: (state) => {
+      return state.products.filter(product =>
+        product.name.toLowerCase().includes(state.search.toLowerCase())
+      )
+    },
   }
 })

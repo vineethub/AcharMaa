@@ -3,9 +3,6 @@
   
       <div class="max-w-6xl mx-auto">
   
-        <!-- 🔝 Header -->
-        <!-- <AppHeader :showBack="true" />  -->
-  
         <!-- 🏷️ Title -->
         <!-- <section class="px-4 md:px-8 mt-4">
           <h2 class="text-lg md:text-2xl font-bold">Shop Pickles 🥭</h2>
