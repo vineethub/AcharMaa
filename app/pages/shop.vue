@@ -80,15 +80,17 @@
   </template>
   
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watchEffect} from 'vue'
 import { useCartStore } from '@/stores/cart' 
 import ProductCard from '@/components/ProductCard.vue'
 import { useProductsStore } from '@/stores/products'
-
+import { useRoute } from 'vue-router'
 
 const productsStore = useProductsStore()
 const cart = useCartStore()
 const activeCategory = ref('Mango')
+const route = useRoute()
+
   
   const categories = [
     { name: 'Mango', icon: '🥭' },
@@ -96,6 +98,12 @@ const activeCategory = ref('Mango')
     { name: 'Spicy', icon: '🌶️' },
     { name: 'Mixed', icon: '🥗' },
   ]
+
+watchEffect(() => {
+  if (route.query.category) {
+    activeCategory.value = route.query.category
+  }
+})
   
 const products = productsStore.products;
   

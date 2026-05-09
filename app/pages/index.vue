@@ -26,19 +26,22 @@
   
         <!-- 🧭 Categories -->
         <section class="px-4 md:px-8">
-          <h3 class="font-semibold mb-3">Categories</h3>
-  
-          <div class="flex md:grid md:grid-cols-4 gap-3 overflow-x-auto md:overflow-visible pb-2">
-            <div
-              v-for="cat in categories"
-              :key="cat.name"
-              class="min-w-[90px] bg-white rounded-xl p-3 text-center shadow hover:shadow-md hover:-translate-y-1 transition"
-            >
-              <div class="text-2xl">{{ cat.icon }}</div>
-              <p class="text-xs mt-1">{{ cat.name }}</p>
-            </div>
-          </div>
-        </section>
+        <h3 class="font-semibold mb-3">Categories</h3>
+
+        <div class="flex md:grid md:grid-cols-4 gap-3 overflow-x-auto md:overflow-visible pb-2">
+
+          <NuxtLink
+            v-for="cat in categories"
+            :key="cat.name"
+            :to="`/shop?category=${cat.name}`"
+            class="min-w-[90px] bg-white rounded-xl p-3 text-center shadow hover:shadow-md hover:-translate-y-1 transition"
+          >
+            <div class="text-2xl">{{ cat.icon }}</div>
+            <p class="text-xs mt-1">{{ cat.name }}</p>
+          </NuxtLink>
+
+        </div>
+      </section>
   
         <!-- 🛍️ Best Sellers -->
         <section class="px-4 md:px-8 mt-6">
