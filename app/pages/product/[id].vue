@@ -206,6 +206,11 @@ const onScroll = (e) => {
   activeIndex.value = Math.round(scrollLeft / width)
 }
 
+
+definePageMeta({
+  layout: 'empty'
+})
+
 // ✅ Products
 const products = productsStore.products;
 
@@ -249,5 +254,7 @@ const addToCart = () => {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+
 
 </style>
