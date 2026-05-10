@@ -12,7 +12,15 @@
             </h1>
           
   
-          <NuxtLink to="/cart" class="text-xl">🛒</NuxtLink>
+            <NuxtLink to="/cart" class="relative text-xl">
+            🛒
+            <span 
+              v-if="cart.totalItems"
+              class="absolute -top-2 -right-2 bg-[#D35400] text-white text-xs px-1 rounded-full"
+            >
+              {{ cart.totalItems }}
+            </span>
+          </NuxtLink>
   
         </header>
   
@@ -110,6 +118,10 @@
   const name = ref('')
   const phone = ref('')
   const address = ref('')
+
+  definePageMeta({
+  layout: 'empty'
+})
 
   const placeOrder = () => {
   if (!name.value || !phone.value || !address.value) {
